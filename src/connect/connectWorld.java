@@ -21,7 +21,7 @@ public class connectWorld {
 	public void gather(){
 		ClassPathXmlApplicationContext context =new ClassPathXmlApplicationContext("");
 		context.start();
-        Jedis redis= new Jedis("10.2.31.38", 6379);
+        Jedis redis= new Jedis("*.*.*.*", 6379);
         Map<String, Service> services = new ConcurrentHashMap<String, Service>();
 //        services.put("test".getBytes(), SerializeUtil.serialize(new Service("localhost", "8083","test",KeyUtil.addKey(new Date(),"1"))));
 //        redis.set();
@@ -33,7 +33,7 @@ public class connectWorld {
 	 * 只第一次访问后的再次判断
 	 */
 	public void findAll(){
-        Jedis redis= new Jedis("10.2.31.38", 6379);
+        Jedis redis= new Jedis("*.*.*.*", 6379);
 //        redis.get
 	}
 	public void connect() throws IOException {
