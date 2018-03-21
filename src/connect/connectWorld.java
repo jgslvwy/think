@@ -23,8 +23,8 @@ public class connectWorld {
 		context.start();
         Jedis redis= new Jedis("10.2.31.38", 6379);
         Map<String, Service> services = new ConcurrentHashMap<String, Service>();
-        services.put("test".getBytes(), SerializeUtil.serialize(new Service("localhost", "8083","test",KeyUtil.addKey(new Date(),"1"))));
-        redis.set();
+//        services.put("test".getBytes(), SerializeUtil.serialize(new Service("localhost", "8083","test",KeyUtil.addKey(new Date(),"1"))));
+//        redis.set();
 	}
 	
 	/**
@@ -34,7 +34,7 @@ public class connectWorld {
 	 */
 	public void findAll(){
         Jedis redis= new Jedis("10.2.31.38", 6379);
-        redis.get
+//        redis.get
 	}
 	public void connect() throws IOException {
        
