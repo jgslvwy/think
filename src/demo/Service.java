@@ -4,7 +4,7 @@ public class Service implements java.io.Serializable {
 	private String url;// 链接地址
 	private String port;// 端口号
 	private String method;// 方法名
-	private String key;// 唯一标识：存储时间第一次和时间戳
+	private String key;// 唯一标识：存储时间第一次和时间戳，如果失效则将remove该服务
 
 	public String getKey() {
 		return key;
