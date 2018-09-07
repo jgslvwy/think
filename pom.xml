@@ -4,7 +4,16 @@
   <artifactId>think</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <build>
-    <sourceDirectory>src</sourceDirectory>
+    <!--默认源代码目录-->
+    <sourceDirectory>src</sourceDirectory>  
+    <!--默认测试源代码目录-->
+    <!--默认资源目录-->
+    <resources>  
+        <resource>  
+            <directory>resources</directory>  
+        </resource>  
+    </resources> 
+    <!--默认测试资源目录--> 
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -14,8 +23,8 @@
           <target>1.8</target>
         </configuration>
       </plugin>
-    </plugins>
-  </build>
+    </plugins> 
+</build>
   <dependencies>
    <dependency>
     <groupId>org.springframework</groupId>
