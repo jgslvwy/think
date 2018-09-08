@@ -8,8 +8,8 @@ import first.UserService;
 
 @Service("userService")
 @Component
-public class UserServiceImpl implements UserService{
 
+public class UserServiceImpl implements UserService{
  
 
 	public String sayHello(String  id) {

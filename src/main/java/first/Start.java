@@ -4,16 +4,16 @@ import org.apache.log4j.PropertyConfigurator;
 
 public class Start {
 
-	static {
+	static{  
 
-		PropertyConfigurator.configure("src/main/resources/log4j.properties");
+            PropertyConfigurator.configure("src/main/resources/log4j.properties");  
 
-	}
+        }  
 
 	public static void main(String[] args) {
 
-		com.alibaba.dubbo.container.Main.main(args);
+               com.alibaba.dubbo.container.Main.main(args);
 
-	}
+    }
 
 }
