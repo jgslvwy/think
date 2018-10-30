@@ -1,13 +1,16 @@
 package trapeze.entity;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * ¼òµ¥µÄ¹¦ÄÜ
+ * ç®€å•çš„åŠŸèƒ½
  * 
- * @author ¾£¹úË§
- * @date 2018Äê9ÔÂ6ÈÕ
+ * @author è†å›½å¸…
+ * @date 2018å¹´9æœˆ6æ—¥
  * @version 1.0
  */
 public class Trapeze extends ReentrantLock {
@@ -50,11 +53,11 @@ public class Trapeze extends ReentrantLock {
 	}
 
 	/**
-	 * Ìí¼ÓÄ³¸öclazz,ĞèÒªÕ¼ÓÃÔòÌí¼Ó¶ÔÏóĞÅÏ¢
+	 * æ·»åŠ æŸä¸ªclazz,éœ€è¦å ç”¨åˆ™æ·»åŠ å¯¹è±¡ä¿¡æ¯
 	 * 
-	 * @author ¾£¹úË§
+	 * @author è†å›½å¸…
 	 * @throws Exception
-	 * @date 2018Äê9ÔÂ6ÈÕ
+	 * @date 2018å¹´9æœˆ6æ—¥
 	 */
 	public void add(Object o) {
 		try {
@@ -69,7 +72,7 @@ public class Trapeze extends ReentrantLock {
 				if (size == seat.length) {
 					throw new Exception("over size");
 				}
-				// ÅĞ¶ÏÊÇ·ñÓĞÖ®Ç°ÊÍ·ÅµÄÎ»ÖÃ£¬Èç¹ûÓĞ£¬ÔòÇÀÏÈÈ¥ÄÇ¸ö£¬·ñÔòÈ¥ÁíÒ»¸öÎ»ÖÃ
+				// åˆ¤æ–­æ˜¯å¦æœ‰ä¹‹å‰é‡Šæ”¾çš„ä½ç½®ï¼Œå¦‚æœæœ‰ï¼Œåˆ™æŠ¢å…ˆå»é‚£ä¸ªï¼Œå¦åˆ™å»å¦ä¸€ä¸ªä½ç½®
 				if (findHash(seat, 0) != -1) {
 					for (int i = 0; i < seat.length; i++) {
 						if (seat[i].hash == 0) {
@@ -94,10 +97,10 @@ public class Trapeze extends ReentrantLock {
 	}
 
 	/**
-	 * Ä³¸öÈËÊÍ·ÅÎ»ÖÃ£¬ÒòÎªÊÇÊı×éÊı¾İ½á¹¹£¬Á¬ĞøµÄ±í¿Õ¼ä£¬ ÎŞ·¨¼ÇÂ¼ÆäÎ»ÖÃ£¬ËùÒÔÔİÊ±ÓÃÁÙÊ±¶ÔÏóÌæ´úµÄ·½Ê½£¬Èç¹ûÒÆ³ı »¹»á±£³ÖÔ­ÓĞÎ»ÖÃ
+	 * æŸä¸ªäººé‡Šæ”¾ä½ç½®ï¼Œå› ä¸ºæ˜¯æ•°ç»„æ•°æ®ç»“æ„ï¼Œè¿ç»­çš„è¡¨ç©ºé—´ï¼Œ æ— æ³•è®°å½•å…¶ä½ç½®ï¼Œæ‰€ä»¥æš‚æ—¶ç”¨ä¸´æ—¶å¯¹è±¡æ›¿ä»£çš„æ–¹å¼ï¼Œå¦‚æœç§»é™¤ è¿˜ä¼šä¿æŒåŸæœ‰ä½ç½®
 	 * 
-	 * @author ¾£¹úË§
-	 * @date 2018Äê9ÔÂ6ÈÕ
+	 * @author è†å›½å¸…
+	 * @date 2018å¹´9æœˆ6æ—¥
 	 */
 	public void remove(Object o) {
 		if (size == 0)
@@ -112,10 +115,10 @@ public class Trapeze extends ReentrantLock {
 	}
 
 	/**
-	 * ÕÒµ½ÊµÌå¶ÔÓ¦µÄhash¶ÔÓ¦µÄÎ»ÖÃ
+	 * æ‰¾åˆ°å®ä½“å¯¹åº”çš„hashå¯¹åº”çš„ä½ç½®
 	 * 
-	 * @author ¾£¹úË§
-	 * @date 2018Äê9ÔÂ6ÈÕ
+	 * @author è†å›½å¸…
+	 * @date 2018å¹´9æœˆ6æ—¥
 	 */
 	public int findHash(Seat[] seat, int hash) {
 		if (Objects.nonNull(seat)) {
@@ -126,13 +129,23 @@ public class Trapeze extends ReentrantLock {
 		}
 		return -1;
 	}	
-
+    
+	
+	
+	public static void main(String[] args) {
+		List<String> list1s  = new ArrayList<String>();
+		list1s.add("2");
+		list1s.add("1");
+		System.out.println(list1s.get(0));
+		Collections.sort(list1s,(s1,s2) -> s1.compareTo(s2));
+		System.out.println(list1s.get(0));
+	}
 	/**
-	 * ÕÒµ½ÊµÌå¶ÔÓ¦µÄhash
+	 * æ‰¾åˆ°å®ä½“å¯¹åº”çš„hash
 	 * 
-	 * @author ¾£¹úË§
+	 * @author è†å›½å¸…
 	 * @param <T>
-	 * @date 2018Äê9ÔÂ6ÈÕ
+	 * @date 2018å¹´9æœˆ6æ—¥
 	 */
 	public <T> T find(Object o) {
 		int hash = hash(o);
@@ -146,10 +159,10 @@ public class Trapeze extends ReentrantLock {
 	}
 
 	/**
-	 * ÅĞ¶ÏÊÇ·ñ³¬¹ıÇïÇ§ÄÜ³ĞÊÜµÄÖØÁ¿
+	 * åˆ¤æ–­æ˜¯å¦è¶…è¿‡ç§‹åƒèƒ½æ‰¿å—çš„é‡é‡
 	 * 
-	 * @author ¾£¹úË§
-	 * @date 2018Äê9ÔÂ6ÈÕ
+	 * @author è†å›½å¸…
+	 * @date 2018å¹´9æœˆ6æ—¥
 	 * @return
 	 */
 	protected Boolean isOver(int wei) {
@@ -162,7 +175,7 @@ public class Trapeze extends ReentrantLock {
 
 	static final int hash(Object key) {
 		int h;
-		// ¼ÆËãhashCode£¬²¢ÎŞ·ûºÅÒÆ¶¯µ½µÍÎ»
+		// è®¡ç®—hashCodeï¼Œå¹¶æ— ç¬¦å·ç§»åŠ¨åˆ°ä½ä½
 		return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
 	}
 }
