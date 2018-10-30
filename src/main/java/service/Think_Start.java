@@ -40,6 +40,28 @@ public class Think_Start {
 		bootstrap.bind(new InetSocketAddress(port));
 	}
 
+	public void start() {
+		EventLoopGroup bossGroup = new NioEventLoopGroup();
+		EventLoopGroup workerGroup = new NioEventLoopGroup();
+		try {
+			ServerBootstrap b = new ServerBootstrap();
+			b.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class)
+					.childHandler(new HttpServerInitializer(servlet)).option(ChannelOption.SO_BACKLOG, 128)
+					.childOption(ChannelOption.SO_KEEPALIVE, true);
+
+			System.out.println("NettyHttpServer Run successfully");
+			// 绑定端口，开始接收进来的连接
+			ChannelFuture f = b.bind(port).sync();
+			// 等待服务器 socket 关闭 。在这个例子中，这不会发生，但你可以优雅地关闭你的服务器。
+			f.channel().closeFuture().sync();
+		} catch (Exception e) {
+			log.error("NettySever start fail", e);
+		} finally {
+			workerGroup.shutdownGracefully();
+			bossGroup.shutdownGracefully();
+		}
+	}
+
 	public static void main(String[] args) {
 		new Think_Start(8080).run();
 	}
@@ -52,7 +74,7 @@ public class Think_Start {
 		this.port = port;
 	}
 
-	 static class DiscardServerHandler extends SimpleChannelHandler {
+	static class DiscardServerHandler extends SimpleChannelHandler {
 		@Override
 		public void channelConnected(ChannelHandlerContext ctx, ChannelStateEvent e) throws Exception {
 			System.out.println("--------服务端-------");
